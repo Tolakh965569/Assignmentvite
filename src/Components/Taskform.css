@@ -1,0 +1,68 @@
+.app_header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: 1px solid black;
+}
+.task_input{
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    color: #000000;
+    border: 1px solid #dcdcdc;
+    padding: 8px 12px ;
+    margin: 15px;
+    width: 100%;
+    border-radius: 4px ;
+}
+.app_header > form{
+
+    width: 40%;
+}
+.task_form_button_line{
+
+    display: flex;
+    justify-content: space-between,space-around;
+    align-items: center;
+}
+.tag{
+
+    font-size: 14px;
+    font-weight: 500px;
+    background-color: #111be2;
+    border: 1px solid #dfdfdf;
+    border-radius: 5px;
+    padding: 2px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #000000;
+}
+.task_status{
+
+    font-size: 16px;
+  font-weight: 500px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  width: 120px;
+  padding: 0 5px;
+  height: 40px;
+}
+.task_submit{
+
+    font-size: 16px;
+    font-weight: 500px;
+    background-color: #6457f9;
+    color: #ffffff;
+    border-radius: 5px;
+    height: 40px;
+    padding: 3px 13px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+
+}
+.task_input::placeholder{
+    color: #686868;
+
+
+}

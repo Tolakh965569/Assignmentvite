@@ -1,0 +1,7 @@
+
+.app_main{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 8%;
+}
+
