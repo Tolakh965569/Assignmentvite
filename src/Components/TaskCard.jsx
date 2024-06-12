@@ -1,24 +1,26 @@
 import React from 'react'
-import TaskColumn from './TaskColumn'
+import TaskColumn from "./TaskColumn.jsx"
 import Tag from "./Tag.jsx";
-import Delete from '../assets/delete.png'
+import delete_icon from "../assets/delete.png";
 import './TaskCard.css'
 
-const TaskCard = ({title}) => {
+const TaskCard = ({ title, tags, handleDelete, index }) => {
   return (
     <article className="task_card">
-        <p className="task_text">{(title)}</p>
-        <div className="task_card_button_line">
-            <div className="task_card_tags">
-                <Tag tagname="HTML"/>
-                <Tag tagname="CSS"/>
-            </div>
-            <div className="task_delete">
-                <img src={Delete} alt="" />
-            </div>
+      <p className="task_text">{title}</p>
+      <div className="task_card_bottom_line">
+        <div className="task_card_tags">
+          {tags.map((tag, index) => (
+            <Tag key={index} tagName={tag} selectd={true} />
+          ))}
         </div>
+        <div className="task_delete" onClick={() => handleDelete(index)}>
+          <img className="delete_icon" src={delete_icon} alt="Delete Task" />
+        </div>
+      </div>
     </article>
-  )
-}
+  );
+};
 
-export default TaskCard
+export default TaskCard;
+

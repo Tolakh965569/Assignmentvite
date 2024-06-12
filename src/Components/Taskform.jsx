@@ -1,47 +1,57 @@
 import React, { useState } from 'react'
 import Tag from './Tag.jsx'
 import './Taskform.css'
-const TaskForm = () => {
-const [taskData,settaskData] = useState({
-  task:"",
-  status: "todo",
-  tags:[]
-})
+const TaskForm = ({ setTasks }) => {
+  const [taskData, setTaskData] = useState({
+    task: "",
+    status: "todo",
+    tags: [],
+  });
 
-const checkTag = (tag) =>{
-  return taskData.tags.some((item) => item === tag);
-}
+  const checkTag = (tag) => {
+    return taskData.tags.some((item) => item === tag);
+  };
 
-
-const handleChange = e =>{
-  const {name,value} = e.target;
-  settaskData((prev) =>{
-    return {...prev,[name]: value}
-  })
-}
-  const handleSumit =(e)=>{
-    e.preventDefault();
-    console.log(taskData);
-  }
-  const selectTag =(tag) =>{
-    if (taskData.tags.some((item) =>item === tag)){
-      const filterTags = taskData.tags.filter((item) =>item !==tag );
-      settaskData((prev) => {
-        return {...prev,tags: filterTags}
+  const selectTag = (tag) => {
+    if (taskData.tags.some((item) => item === tag)) {
+      const filterTags = taskData.tags.filter((item) => item !== tag);
+      setTaskData((prev) => {
+        return { ...prev, tags: filterTags };
       });
-    }else{
-      settaskData((prev) => {
-        return{
-          ...prev,tags: [...prev.tags,tag]
-      }
+    } else {
+      setTaskData((prev) => {
+        return {
+          ...prev,
+          tags: [...prev.tags, tag],
+        };
+      });
     }
-   );
-  }
-}
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setTaskData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTasks((prev) => {
+      return [...prev, taskData];
+    });
+    setTaskData({
+      task: "",
+      status: "todo",
+      tags: [],
+    });
+  };
+
   return (
     <div >
       <header className="app_header">
-            <form onSubmit={handleSumit}>
+            <form onSubmit={handleSubmit}>
                 <input type="text" 
                 className="task_input"
                  placeholder="Enter your task" 
@@ -81,4 +91,4 @@ const handleChange = e =>{
   )
 }
 
-export default TaskForm
+export default TaskForm;

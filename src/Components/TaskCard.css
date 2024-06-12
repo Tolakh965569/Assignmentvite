@@ -34,3 +34,6 @@
 .task_delete:hover{
     background-color: #ebebeb;
 }
+.delete_icon:hover{
+    opacity: 80%;
+  }
